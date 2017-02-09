@@ -34,5 +34,4 @@
    else
       echo "Usage: php create_authorized_user <new_username> <new_password>\n";
 
-
 ?>
