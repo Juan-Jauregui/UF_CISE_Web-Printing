@@ -17,7 +17,7 @@
                <h1>Print Files</h1>
             </div>
 
-            <form action="do_print.php" method="post">
+            <form action="./do_print.php" method="post">
                <div class="form-group">
                   <label for="username_input">CISE Login</label>
                   <input name="username" type="username" class="form-control" id="username_input" placeholder="Username">
