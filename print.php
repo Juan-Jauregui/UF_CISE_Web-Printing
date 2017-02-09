@@ -10,33 +10,42 @@
 
 <body>
    <div class="container">
+      <div class="row">
+         <div class="col-sm-6 col-sm-offset-3">
 
-      <div class="page-header">
-         <h1>Print Files</h1>
+            <div class="page-header">
+               <h1>Print Files</h1>
+            </div>
+
+            <form action="do_print.php" method="post">
+               <div class="form-group">
+                  <label for="username_input">CISE Login</label>
+                  <input name="username" type="username" class="form-control" id="username_input" placeholder="Username">
+               </div>
+
+               <div class="form-group">
+                  <label for="password_input">Password</label>
+                  <input name="password" type="password" class="form-control" id="password_input" placeholder="Password">
+               </div>
+
+               <div class="form-group">
+                  <label for="exampleInputFile">File input</label>
+                  <input name="upload" type="file" id="input_file">
+               </div>
+
+               <div class="checkbox">
+                  <label>
+                     <input name="is_evil" type="checkbox"> I'm not evil
+                  </label>
+               </div>
+
+               <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+         </div>
+
       </div>
-
-      <form>
-         <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-         </div>
-         <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-         </div>
-         <div class="form-group">
-            <label for="exampleInputFile">File input</label>
-            <input type="file" id="exampleInputFile">
-            <p class="help-block">Example block-level help text here.</p>
-         </div>
-         <div class="checkbox">
-            <label>
-               <input type="checkbox"> Check me out
-            </label>
-         </div>
-         <button type="submit" class="btn btn-default">Submit</button>
-      </form>
    </div>
+
 
    <!-- Bootstrap JavaScript -->
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
