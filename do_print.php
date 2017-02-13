@@ -1,7 +1,6 @@
 #!/usr/local/bin/php
 
 <?php
-
 //echo phpversion(); //Are you kidding me CISE, 5.2.9? Jesus
 
 /* Get real path just to be safe */
@@ -14,22 +13,26 @@ include_once($real_path."/print_stuff/passHashLib.php");
 $users_db_str = file_get_contents($real_path."/print_stuff/authorized_users.json");
 $users_db_arr = json_decode($users_db_str,true);
 
-$is_auth = FALSE;
-/* Auth defaults to false. Will flip to true only if password checks out. */
-
-/* If username and password were provided */
-if (isset($_POST["username"]) && isset($_POST["password"])) {
-	/* Try and grab the entry from authorized_users matching the given user */
-	$hashed_pw = $users_db_arr[$_POST["username"]];
-
-	/* If a user with that username exists, try and verify its password */
-	if(isset($hashed_pw)){
-		$is_auth = password_verify("".$_POST["password"],"".$hashed_pw);
-	}
-}
+$hashed_pw = $users_db_arr[$_POST["username"]];
+$is_auth = check_password($_POST["password"],$hashed_pw);
 
 if($is_auth){
-	printf("\nAuthorized");
+	if(!isset($_POST["not_evil"]))
+	printf("You must be not evil to use this service.\n");
+	else {
+
+		//$target_location = $real_path."/print_stuff/uploads/".$_FILES['upload']['name']
+		//echo "Target location: "$target_location;
+		$temp_location = $_FILES["upload"]["tmp_name"];
+		$final_location = $real_path."/print_stuff/uploads/".$_FILES["upload"]["name"];
+
+		if (move_uploaded_file($temp_location, $final_location)) {
+			echo "File is valid, and was successfully uploaded.\n";
+		} else {
+			echo "Possible file upload attack!\n";
+		}
+
+	}
 } else printf("\nUnauthorized");
 
 

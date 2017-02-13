@@ -17,7 +17,7 @@
                <h1>Print Files</h1>
             </div>
 
-            <form action="./do_print.php" method="post">
+            <form action="./do_print.php" method="post" enctype="multipart/form-data">
                <div class="form-group">
                   <label for="username_input">CISE Login</label>
                   <input name="username" type="username" class="form-control" id="username_input" placeholder="Username">
@@ -35,7 +35,7 @@
 
                <div class="checkbox">
                   <label>
-                     <input name="is_evil" type="checkbox"> I'm not evil
+                     <input name="not_evil" type="checkbox" id="not_evil"> I'm not evil
                   </label>
                </div>
 
