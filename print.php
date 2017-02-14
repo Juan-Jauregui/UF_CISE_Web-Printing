@@ -19,8 +19,7 @@
 		</div>
 
 		<div class="row">
-
-			<div class="col-xs-6 col-xs-offset-3">
+			<div class="col-xs-9 col-xs-offset-1">
 				<form action="./do_print.php" method="post" enctype="multipart/form-data">
 					<div class="form-group">
 						<label for="username_input">CISE Login</label>
@@ -33,21 +32,26 @@
 					</div>
 
 					<div class="row">
-						<div class="col-xs-4">
+						<div class="col-xs-2">
 							<div class="form-group">
 								<label for="printer">Printer</label><br />
 								<input name="printer" type="radio" id="ps114" value="ps114" checked="checked"> ps114
 								<br />
-								<input name="printer" type="radio" id="ps309" value="ps114"> ps309
+								<input name="printer" type="radio" id="ps309" value="ps309"> ps309
 							</div>
 						</div>
-						<div class="col-xs-6">
+						<div class="col-xs-5 col-xs-offset-1">
 							<div class="form-group">
-								<label for="exampleInputFile">File</label>
+								<label for="upload">File</label>
 								<input name="upload" type="file" id="input_file">
 							</div>
 						</div>
+						<div class="col-xs-4">
+							Number of copies:
+							<input type="number" name="quantity" min="1">
+						</div>
 					</div>
+
 					<div class="row">
 						<button type="submit" class="btn btn-block btn-primary">Submit</button>
 					</div>

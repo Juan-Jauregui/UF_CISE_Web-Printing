@@ -21,16 +21,16 @@ if (!$ssh->login($_POST["username"], $_POST["password"])) {
 		$final_location = "$real_path/temp_file_bin/".$_FILES["upload"]["name"];
 
 		if (move_uploaded_file($temp_location, $final_location)) {
-			echo "File is valid, and was successfully uploaded.\n";
-			echo "<pre>".$ssh->exec("cat $final_location")."</pre>";
+			echo "File is valid, and was successfully uploaded.\n\nPrinting...\n\n";
+			echo "<pre>".$ssh->exec("lp -d ".$_POST["printer"]." -n ".$_POST["quantity"]." ".$final_location)."</pre>";
+			//echo "<pre>".("lp -d ".$_POST["printer"]." -n ".$_POST["quantity"]." ".$final_location)."</pre>";
 		} else echo "File failed to upload";
 
 		exec("rm -r ./temp_file_bin");//Get rid of the temp folder
 
 	} else printf("\nNo file uploaded\n");
+	printf( "\n<a href=\"./print.php\"><button>Back</button></a>");
 
 }
-
-
 
 ?>
