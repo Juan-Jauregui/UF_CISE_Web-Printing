@@ -32,7 +32,7 @@
 					</div>
 
 					<div class="row">
-						<div class="col-xs-2">
+						<div class="col-sm-3 col-sm-offset-0 col-xs-3 col-xs-offset-2">
 							<div class="form-group">
 								<label for="printer">Printer</label><br />
 								<input name="printer" type="radio" id="ps114" value="ps114" checked="checked"> ps114
@@ -40,18 +40,19 @@
 								<input name="printer" type="radio" id="ps309" value="ps309"> ps309
 							</div>
 						</div>
-						<div class="col-xs-5 col-xs-offset-1">
+						<div class="col-sm-5 col-sm-offset-1 col-xs-6">
 							<div class="form-group">
 								<label for="upload">File</label>
 								<input name="upload" type="file" id="input_file">
 							</div>
 						</div>
-						<div class="col-xs-4">
+						<div class="col-sm-2 col-sm-offset-1 col-xs-6">
 							Number of copies:
-							<input type="number" name="quantity" min="1">
+							<input type="number" name="quantity" min="1" max="100" value="1">
 						</div>
-					</div>
 
+					</div>
+					<br />
 					<div class="row">
 						<button type="submit" class="btn btn-block btn-primary">Submit</button>
 					</div>
