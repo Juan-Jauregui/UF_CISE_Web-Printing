@@ -3,7 +3,7 @@ A web tool to allow remotely printing to the CISE network's printers.
 
 ## Usage
 1. Follow [the department's instructions](https://www.cise.ufl.edu/help/web/php) on running PHP programs using the hosting  provided to you.
-2. Place `print.php`, `do_print.php`, and the folder `phpseclib1.0.5` inside of `~/public_html/lib/` 
+2. Place `print.php`, `do_print.php` in `~/public_html/`, and the folder `phpseclib1.0.5` inside of `~/public_html/lib/` 
   * Make sure you give all files and folders the appropriate permissions as detailed in the above instructions
 
 ## How it works
