@@ -23,7 +23,7 @@
 			<div class="col-xs-6 col-xs-offset-3">
 				<form action="./do_print.php" method="post" enctype="multipart/form-data">
 					<div class="form-group">
-						<label for="username_input">Login</label>
+						<label for="username_input">CISE Login</label>
 						<input name="username" type="username" class="form-control" id="username_input" placeholder="Username">
 					</div>
 
@@ -36,14 +36,14 @@
 						<div class="col-xs-4">
 							<div class="form-group">
 								<label for="printer">Printer</label><br />
-								<input name="printer" type="radio" id="ps114"> ps114
+								<input name="printer" type="radio" id="ps114" value="ps114" checked="checked"> ps114
 								<br />
-								<input name="printer" type="radio" id="ps309"> ps309
+								<input name="printer" type="radio" id="ps309" value="ps114"> ps309
 							</div>
 						</div>
 						<div class="col-xs-6">
 							<div class="form-group">
-								<label for="exampleInputFile">File input</label>
+								<label for="exampleInputFile">File</label>
 								<input name="upload" type="file" id="input_file">
 							</div>
 						</div>

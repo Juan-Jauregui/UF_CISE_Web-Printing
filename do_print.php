@@ -3,44 +3,34 @@
 <?php
 //echo phpversion(); //Are you kidding me CISE, 5.2.9? Jesus
 
-/* Get real path just to be safe */
+/* Get real path */
 $real_path = realpath(dirname(__FILE__));
 
-/* Include the necessary password-hashing library  */
-include_once($real_path."/print_stuff/passHashLib.php");
-
 /* For SSH */
-set_include_path($real_path.'/print_stuff/phpseclib1.0.5');
+set_include_path($real_path.'/lib/phpseclib1.0.5');
 include_once("Net/SSH2.php");
 
-/* Read the auth file and make it into an associative array, $users_db_arr */
-$users_db_str = file_get_contents($real_path."/print_stuff/authorized_users.json");
-$users_db_arr = json_decode($users_db_str,true);
-
-$hashed_pw = $users_db_arr[$_POST["username"]];
-$is_auth = check_password($_POST["password"],$hashed_pw);
-
-if($is_auth){
-	//var_dump($_FILES);
+$ssh = new Net_SSH2('storm.cise.ufl.edu');
+if (!$ssh->login($_POST["username"], $_POST["password"])) {
+	 exit('Login Failed');
+} else {
 	if($_FILES["upload"]["size"] > 0){
+		echo "<pre>".$ssh->exec("lpstat -p | grep ".$_POST["printer"])."</pre>";
+		exec("mkdir -p ./temp_file_bin");//Temp file storage while printing
 		$temp_location = $_FILES["upload"]["tmp_name"];
-		$final_location = $real_path."/print_stuff/uploads/".$_FILES["upload"]["name"];
+		$final_location = "$real_path/temp_file_bin/".$_FILES["upload"]["name"];
 
 		if (move_uploaded_file($temp_location, $final_location)) {
 			echo "File is valid, and was successfully uploaded.\n";
-
-
+			echo "<pre>".$ssh->exec("cat $final_location")."</pre>";
 		} else echo "File failed to upload";
+
+		exec("rm -r ./temp_file_bin");//Get rid of the temp folder
+
 	} else printf("\nNo file uploaded\n");
 
-	$ssh = new Net_SSH2('storm.cise.ufl.edu');
-	if (!$ssh->login('jj3', 'nicetry')) {
-		 exit('Login Failed');
-	}
+}
 
-	echo $ssh->exec('lpstat -p -d');
-
-} else printf("\nUnauthorized");
 
 
 ?>
